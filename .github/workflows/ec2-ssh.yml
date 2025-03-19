@@ -14,18 +14,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up SSH
+    - name: Set up SSH Agent
       run: |
-        mkdir -p ~/.ssh
-        echo "$EC2_SSH_PRIVATE_KEY" > ~/.ssh/github-actions-key
-        chmod 600 ~/.ssh/github-actions-key
-        # Verify the key file permissions and format
-        ls -l ~/.ssh
-        cat ~/.ssh/github-actions-key
+        eval $(ssh-agent -s)
+        echo "$EC2_SSH_PRIVATE_KEY" | ssh-add -
         ssh-keyscan -H 50.112.216.238 >> ~/.ssh/known_hosts
-        # Check the permissions and content of known_hosts
-        ls -l ~/.ssh/known_hosts
 
     - name: Connect to EC2 and create test.txt
       run: |
-        ssh -i ~/.ssh/github-actions-key -o StrictHostKeyChecking=no ubuntu@50.112.216.238 "echo 'I am a test file from GitHub Actions' > ~/test.txt"
+        ssh -o StrictHostKeyChecking=no ubuntu@50.112.216.238 "echo 'I am a test file from GitHub Actions' > ~/test.txt"

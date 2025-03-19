@@ -66,8 +66,7 @@ bXJvV72hvPhQuJZv/xXq6DDkmDXX1DtM8YvQxeqWW01QUQYPx2Vr/mCcKoWsfRYOztgk8n
 Gn1GoeCHXRBudmnQk/iEVEmhuizMFPzJri3J9ocwQATk/xzZs8D/2Gfv5wUF3ZJh1nXtVQ
 55q6v+pRJjCJAXxCvVtIcsTFW1I1NiUMXxqbjRE9LGTBLT2mJta5TYB0RhPWZuNKoR+PSM
 BrzjHsjPJylFBFXGFFiIZe8ld0HmdKe6MPg4ayvaIEnxdXg7Jb1tcO2ghEB+0C89nNkDhS
-FAV7NIzFHQ8AAAARZ2l0aHViLWFjdGlvbi1rZXkBAg==
------END OPENSSH PRIVATE KEY-----" > private_key.pem
+FAV7NIzFHQ8AAAARZ2l0aHViLWFjdGlvbi1rZXkBAg==" > private_key.pem
         chmod 600 private_key.pem
         
         # Add the private key to the SSH agent

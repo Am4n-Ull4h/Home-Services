@@ -1,0 +1,26 @@
+name: EC2 SSH Test
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the action from
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  ssh-to-ec2:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "$EC2_SSH_PRIVATE_KEY" > ~/.ssh/github-actions-key
+        chmod 600 ~/.ssh/github-actions-key
+        ssh-keyscan -H 50.112.216.238 >> ~/.ssh/known_hosts
+
+    - name: Connect to EC2 and create test.txt
+      run: |
+        ssh -i ~/.ssh/github-actions-key -o StrictHostKeyChecking=no ubuntu@50.112.216.238 "echo 'I am a test file from GitHub Actions' > ~/test.txt"

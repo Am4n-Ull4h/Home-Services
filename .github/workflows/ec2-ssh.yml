@@ -3,7 +3,7 @@ name: EC2 SSH Test
 on:
   push:
     branches:
-      - main  # Change this to the branch you want to trigger the action from
+      - main  # Adjust the trigger branch if necessary
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -19,7 +19,12 @@ jobs:
         mkdir -p ~/.ssh
         echo "$EC2_SSH_PRIVATE_KEY" > ~/.ssh/github-actions-key
         chmod 600 ~/.ssh/github-actions-key
+        # Verify the key file permissions and format
+        ls -l ~/.ssh
+        cat ~/.ssh/github-actions-key
         ssh-keyscan -H 50.112.216.238 >> ~/.ssh/known_hosts
+        # Check the permissions and content of known_hosts
+        ls -l ~/.ssh/known_hosts
 
     - name: Connect to EC2 and create test.txt
       run: |

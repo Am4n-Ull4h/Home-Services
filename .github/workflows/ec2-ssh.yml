@@ -17,8 +17,18 @@ jobs:
     - name: Set up SSH Agent
       run: |
         eval $(ssh-agent -s)
+        
+        # Print the private key to verify its format (REMOVE THIS IN PRODUCTION)
+        echo "Printing private key for debugging purposes:"
+        echo "$EC2_SSH_PRIVATE_KEY"
+        
         echo "$EC2_SSH_PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
+        
+        # Print the key again to verify it's saved correctly (REMOVE THIS IN PRODUCTION)
+        echo "Key saved to private_key.pem:"
+        cat private_key.pem
+        
         ssh-add private_key.pem
         ssh-keyscan -H 50.112.216.238 >> ~/.ssh/known_hosts
 

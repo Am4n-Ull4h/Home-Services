@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-job:
-    runs-on: [self-hosted, home-market-place]
+    runs-on: [self-hosted, home]
     
     steps:
     - name: Checkout repository

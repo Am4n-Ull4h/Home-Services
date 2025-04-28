@@ -25,7 +25,9 @@ jobs:
           export NVM_DIR="\$HOME/.nvm"
           [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
           export PATH="\$HOME/.nvm/versions/node/v22.14.0/bin:\$PATH"
-            cd /home/ubuntu/HomePhase2
+            cd /home/ubuntu/HomeServicePhase2
             git pull
-            
+            npm run build
+            sudo rm -r /var/www/dist
+            sudo mv dist /var/www
           EOF

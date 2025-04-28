@@ -27,5 +27,5 @@ jobs:
           export PATH="\$HOME/.nvm/versions/node/v22.14.0/bin:\$PATH"
             cd /home/ubuntu/HomePhase2
             git pull
-            pm2 restart 1
+            
           EOF

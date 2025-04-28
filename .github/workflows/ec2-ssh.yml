@@ -18,7 +18,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: SSH into  VM and restart app
+      - name: SSH into  VM
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@50.112.216.238 << EOF
           set -e

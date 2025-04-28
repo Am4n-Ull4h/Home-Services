@@ -1,4 +1,4 @@
-name: SSH to Azure VM
+name: SSH to VM
 
 on:
   push:
